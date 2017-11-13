@@ -36,6 +36,8 @@ class SVGInline extends Component {
       width,
       classSuffix,
       cleanupExceptions,
+			svgWidth,
+			svgHeight,
       ...componentProps,
     } = this.props
 
@@ -100,7 +102,17 @@ class SVGInline extends Component {
                     (height ? `height: ${height};` : "") +
                   "\""
                 : ""
-              )
+							) +
+              (
+                svgWidth
+                ? ` width="${svgWidth}"`
+                : ""
+              ) +
+              (
+                svgHeight
+                ? ` height="${svgHeight}"`
+                : ""
+              ) 
             ),
           },
         }
@@ -125,6 +137,8 @@ SVGInline.propTypes = {
   cleanupExceptions: PropTypes.array,
   width: PropTypes.string,
   height: PropTypes.string,
+  svgWidth: PropTypes.string,
+  svgHeight: PropTypes.string,
 }
 
 SVGInline.defaultProps = {
