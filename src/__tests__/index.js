@@ -150,3 +150,20 @@ test("SVGInline: does not pass internal props to component", (t) => {
   )
 
 })
+
+test("SVGInline: should add width and height props via svgWidth/svgHeight", (t) => {
+  const result = ReactDOMServer.renderToStaticMarkup(
+    <SVGInline
+      component="div"
+      className="TestSVG"
+      svg="<svg><g></g></svg>"
+      svgWidth="50"
+      svgHeight="60"
+    />
+  )
+  t.is(
+    result,
+    `<div class="SVGInline TestSVG"><svg class="SVGInline-svg TestSVG-svg" width="50" height="60"><g></g></svg></div>`
+  )
+})
+
